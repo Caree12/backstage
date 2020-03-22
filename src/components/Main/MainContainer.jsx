@@ -40,22 +40,11 @@ class MainPage extends React.Component {
     //don't call if no user entered value
     if(!num) {return;}
 
-    //already exists in cache so update occurence count and datetime value
+    //already exists in cache so update occurence count
     if(cache[num]) {
       console.log('cache already exits')
       cache[num].occurrences += 1;
       // const updatedCachedNumNoCall = this._updateCacheResult(this.state.allResults.find(result => result.number === num)[0]);
-
-      // // update allResults with new occurrences count
-      // this._updateResults(updatedCachedNumNoCall);      
-
-      // //update datetime and last_datetime of each obj with same number
-      // const updatedResults = allResults.map(result => {
-      //   if(result.number === num) {
-      //     result.last_datetime = 
-      //     acc.push(result)
-      //   }
-      // }
     } else {
       console.log('add to cache')
       cache[num] = {};
@@ -64,11 +53,12 @@ class MainPage extends React.Component {
       console.log('cache', cache, 'state.valueCache', this.state.valueCache)
     }
 
+    // const cacheObjClone = Object.assign({}, cache[num])
+
     let callData = await getNumDiffCall(cache[num])
     .then(res => {
       console.log('getNumDiffCall res', res)
       console.log('getNumDiffCall state', this.state)
-      cache[num].value = res.value;
       
       this.setState(prevState => ({
         allResults: [res, ...prevState.allResults],

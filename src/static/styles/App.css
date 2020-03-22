@@ -16,18 +16,19 @@ body {
 header {
   text-align: center;
 }
-
 .c__app--container {
   display: grid;
   grid-template-columns: 5% 1fr 1fr 5%;
 }
 
-.c__numForm--container {
-  grid-column-start: 2;
-  grid-column-end: 3;
+.c__numForm--container,
+.c__list--results--container {
+  justify-self: center;
   padding-top: 2rem;
 }
-
+.c__numForm--container {
+  grid-column-start: 2;
+}
 .c__numForm--container label,
 .c__numForm--result {
   font-size: 1.5rem;
@@ -65,7 +66,6 @@ header {
 
 .c__list--results--container {
   grid-column-start: 3;
-  grid-column-end: 4;
   padding-top: 2rem;
 }
 
@@ -80,4 +80,16 @@ header {
 
 .c__list--results--item--data--point {
   padding: 1rem;
+}
+
+@media (max-width: 767px) {
+  .c__app--container {
+    grid-template-columns: 5% 1fr 5%;
+  }
+
+  .c__numForm--container,
+  .c__list--results--container {
+    grid-column-start: 2;
+    justify-self: left;
+  }
 }

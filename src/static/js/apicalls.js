@@ -17,30 +17,14 @@ export const getNumDiffCall = async (numObj) => {
 	  // console.log('getNumDiffCall diffValue', diffValue)
 	}
   
-	  // console.log('getNumDiffCall diffValue outside', diffValue)
-
-  //unix Math.round((new Date()).getTime() / 1000);
-  //user friendly new Date().toUTCString;
-  //user friendly new Date().toLocaleDateString() + ' at ' + new Date().toLocaleTimeString();
-
 	let jsonObj = await new Promise((resolve,reject)=>{
 	  setTimeout(()=>{
-	  	// const newLastDateTime = numObj.last_datetime ? 
+	  	const currentTime = Math.round((new Date()).getTime() / 1000);
+	  	const newLastDateTime = numObj.datetime ? numObj.datetime : currentTime;
 	  	console.log('value in Promise', diffValue)
-			resolve(Object.assign(numObj, {datetime: Math.round((new Date()).getTime() / 1000), value: diffValue}))
-		},3000)
+			resolve(Object.assign({}, numObj, {datetime: currentTime, value: diffValue, last_datetime: newLastDateTime}))
+		},300)
 	})
 	console.log('jsonObj after Promise', jsonObj)
 	return jsonObj;
 } 
-
-
-	// {
-	// 	datetime //current date/time of this request,
-	// 	value // solution,
-	// 	number // input number
-	// 	occurrences  // the number of times input has been requested
-	// 	last_datetime // last date/time of request for this input
-	// }
-
-	// 
