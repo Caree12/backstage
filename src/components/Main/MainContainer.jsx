@@ -8,6 +8,7 @@ class MainPage extends React.Component {
     super(props);
     this.state = {
     	allResults: [],
+      fetchInProgress: false,
       valueCache: {},
       value: '',
     };
@@ -29,9 +30,12 @@ class MainPage extends React.Component {
     //don't call if no user entered value
     if(!num) {return;}
 
-    //already exists in cache so update occurence count
+    this.setState({fetchInProgress: true})
+    
+    //check if number already cache 
     if(cache[num]) {
-      console.log('cache already exits allResults', this.state.allResults)
+      //in cache so update occurence count and datetime
+      console.log('cache already exits')
       cache[num].occurrences += 1;
       cache[num].datetime = this.state.allResults.find(result => result.number === Number(num)).datetime;
     } else {
@@ -39,27 +43,30 @@ class MainPage extends React.Component {
       cache[num] = {};
       cache[num].number = num;
       cache[num].occurrences = 1;
-      console.log('cache', cache, 'state.valueCache', this.state.valueCache)
+      // console.log('cache', cache, 'state.valueCache', this.state.valueCache)
     }
 
-    let callData = await getNumDiffCall(cache[num])
+    await getNumDiffCall(cache[num])
     .then(res => {
       this.setState(prevState => ({
         allResults: [res, ...prevState.allResults],
+        fetchInProgress: false,
         valueCache: cache,
       }));
       return res;
     }).catch(err => {
+      this.setState({fetchInProgress: false})
       return 'Error in MainContainer: ' + err;
     });
   }
 
 	render() {	
-    const resultNum = this.state.allResults[0] && this.state.allResults[0].value ? this.state.allResults[0].value : false;
+    const resultNum = this.state.allResults[0] && (this.state.allResults[0].value || this.state.allResults[0].value === 0) ? this.state.allResults[0].value : false;
 		
     return (
 			<div className="c__app--container">	
 				<NumForm 
+          fetchInProgress={this.state.fetchInProgress}
 					getNumValue={this._getNumValue}
           resultNum={resultNum}
 				/>

@@ -1,6 +1,6 @@
 .App-header {
   background-color: #4e579b;
-  min-height: 10vh;
+  min-height: 8vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,8 +53,13 @@ header {
 .c__numForm--container input[type='submit'] {
   border-radius: 7px;
   background-color: #3dcff9;
+  border: 1px solid #3dcff9;
   color: #fff;
   font-weight: 700px;
+}
+.c__numForm--container input[type='submit']:hover {
+  color: #3dcff9;
+  background-color: #fff;
 }
 
 .c__numForm--container input[type='number'],
