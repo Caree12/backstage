@@ -1,3 +1,5 @@
+import { getUnixDateNow } from './utils';
+
 export const getNumDiffCall = async (numObj) => {
 	console.log('getNumDiffCall called numObj', numObj);
 	const num = numObj.number;
@@ -19,7 +21,7 @@ export const getNumDiffCall = async (numObj) => {
   
 	let jsonObj = await new Promise((resolve,reject)=>{
 	  setTimeout(()=>{
-	  	const currentTime = Math.round((new Date()).getTime() / 1000);
+	  	const currentTime = getUnixDateNow();
 	  	const newLastDateTime = numObj.datetime ? numObj.datetime : currentTime;
 	  	console.log('value in Promise', diffValue)
 			resolve(Object.assign({}, numObj, {datetime: currentTime, value: diffValue, last_datetime: newLastDateTime}))

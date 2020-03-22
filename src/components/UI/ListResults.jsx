@@ -7,7 +7,7 @@ export default function ListResults (props) {
     // return null;
   return (
     <div className="c__list--results--container">
-      <div className="c__list--results--header"> Call History Results (descending order)</div>
+      <div className="c__list--results--header"> Call Results (descending order)</div>
       {props.results.map((result, i) => 
       	<ResultItem 
       		result={result}
