@@ -25,29 +25,59 @@ header {
 .c__numForm--container {
   grid-column-start: 2;
   grid-column-end: 3;
+  padding-top: 2rem;
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+.c__numForm--container label,
+.c__numForm--result {
+  font-size: 1.5rem;
+}
+
+.c__numForm--container form {
+  margin-bottom: 1rem;
+}
+.c__numForm--container input {
+  margin-left: 0.7rem;
+}
+.c__numForm--container input[type='number']::-webkit-inner-spin-button,
+.c__numForm--container input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type='number'] {
+.c__numForm--container input[type='number'] {
   border-radius: 4px;
 }
 
-input[type='submit'] {
+.c__numForm--container input[type='submit'] {
   border-radius: 7px;
   background-color: #3dcff9;
   color: #fff;
   font-weight: 700px;
 }
 
-label,
-input[type='number'],
-input[type='submit'] {
-  min-width: 50px;
+.c__numForm--container input[type='number'],
+.c__numForm--container input[type='submit'] {
+  min-width: 75px;
   padding: 7px;
-  font-size: 20px;
+  font-size: 1.5rem;
+}
+
+.c__list--results--container {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  padding-top: 2rem;
+}
+
+.c__list--results--header {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+}
+.c__list--results--item {
+  border: 1px solid grey;
+  margin-bottom: 1rem;
+}
+
+.c__list--results--item--data--point {
+  padding: 1rem;
 }

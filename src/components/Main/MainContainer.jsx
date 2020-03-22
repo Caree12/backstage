@@ -120,7 +120,10 @@ class MainPage extends React.Component {
 					getNumValue={this._getNumValue}
           resultNum={resultNum}
 				/>
-		  	<ListResults results={this.state.allResults.length === 0 ? false : this.state.allResults} />
+		  	<ListResults 
+          results={this.state.allResults.length === 0 ? false : this.state.allResults} 
+          resultKeys={['datetime', 'number', 'value', 'occurrences', 'last_datetime']}
+        />
 		  </div>
 	 	);
 	}

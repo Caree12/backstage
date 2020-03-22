@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 
 export default function NumForm (props) {
   const [value, setValue] = useState('')
@@ -15,18 +15,18 @@ export default function NumForm (props) {
   }
 
   return (
-    <Fragment>
-      <form onSubmit={_handleSubmit} className="c__numForm--container">
+    <div className="c__numForm--container">
+      <form onSubmit={_handleSubmit} className="c__numForm--form--container">
         <label>
-          Number:
+          Number: 
           <input type="number" min="1" max="100" step="1" value={value} onChange={_handleChange} />
         </label>
         <input type="submit" value="Submit" />
       </form>
 
       {props.resultNum &&
-        <div>{props.resultNum}</div>
+        <div className="c__numForm--result">Difference: {props.resultNum}</div>
       }
-    </Fragment>  
+    </div>  
     );
 }
