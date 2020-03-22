@@ -15,7 +15,6 @@ class MainPage extends React.Component {
   }
 
   _getNumValue = (num) => {
-    console.log('_getNumValue called num', num, 'state', this.state.value)
   	if(num !== this.state.value) {
   		this.setState({value: num});
   	}
@@ -24,26 +23,22 @@ class MainPage extends React.Component {
   }
 
   _getNumResult = async (num) => {
-    console.log("_getResult called state.value", this.state.value, 'num', num);
     const cache = Object.assign({}, this.state.valueCache);
-    console.log("cache", cache, 'state', this.state.valueCache)
-    //don't call if no user entered value
+    
+    //return out if no valid user entered value
     if(!num) {return;}
 
     this.setState({fetchInProgress: true})
     
     //check if number already cache 
     if(cache[num]) {
-      //in cache so update occurence count and datetime
-      console.log('cache already exits')
+      //in cache so update occurence count and datetime to update last_datetime
       cache[num].occurrences += 1;
       cache[num].datetime = this.state.allResults.find(result => result.number === Number(num)).datetime;
     } else {
-      console.log('add to cache')
       cache[num] = {};
       cache[num].number = num;
       cache[num].occurrences = 1;
-      // console.log('cache', cache, 'state.valueCache', this.state.valueCache)
     }
 
     await getNumDiffCall(cache[num])
