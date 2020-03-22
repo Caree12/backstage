@@ -68,6 +68,7 @@ class MainPage extends React.Component {
 				<NumForm 
           fetchInProgress={this.state.fetchInProgress}
 					getNumValue={this._getNumValue}
+          parentValue={this.state.value}
           resultNum={resultNum}
 				/>
 		  	<ListResults 

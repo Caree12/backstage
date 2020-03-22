@@ -25,7 +25,7 @@ export default function NumForm (props) {
 
       {props.fetchInProgress
         ? <Loader />
-        : (props.resultNum || props.resultNum === 0) && value && (<div className="c__numForm--result">Difference: {props.resultNum}</div>)
+        : (props.resultNum || props.resultNum === 0) && value && props.parentValue === value && (<div className="c__numForm--result">Difference: {props.resultNum}</div>)
       }
     </div>  
   );
