@@ -1,3 +1,35 @@
+Welcome to Carrie Wladis' "What's the Diff" code challenge! 
+
+## Challenge
+
+Design a web application that allows the user to query the difference between:
+(a) the sum of the squares of the first n natural numbers and (b) the square of the sum of the first n natural numbers, where n is an integer greater than 0 and less than or equal to 100.
+
+Users should be able to input a valid number in a form somewhere in your application and have it sent to a server to calculate the result. <br>
+For this challenge, an API call should be mocked out as a function that performs the calculation and returns a Promise (or Observable) to simulate an asynchronous request.
+
+Your mock API call should return a Promise of a JSON object with the following structure:
+
+{
+datetime //current date/time of this request,
+value // solution,
+number // input number
+occurrences  // the number of times input has been requested
+last_datetime // last date/time of request for this input
+}
+
+The application should display a list of all of the API responses from the server. 
+
+## Requirements
+* Use the latest JS and React - create-react-app is acceptable<br>
+* Installation by doing: yarn install (or npm install) and run it with yarn start (or npm start).<br>
+
+## Bonus
+
+Memoize the calculation piece of the mock API while still having the occurrence tracking work. 
+
+## REFEREINCE: Original create react app README below
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
